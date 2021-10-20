@@ -52,7 +52,7 @@ export const Period = styled.Text`
 
 export const Price = styled.Text`
   font-family: ${({ theme }) => theme.fonts.secondary_500};
-  color: ${({ theme }) => theme.colors.title};
+  color: ${({ theme }) => theme.colors.main};
   font-size: ${RFValue(15)}px;
 `
 
