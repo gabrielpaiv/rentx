@@ -3,13 +3,7 @@ import React from 'react'
 
 import Logo from '../../assets/logo.svg'
 
-import {
-  HomeContainer,
-  Header,
-  TotalCars,
-  HeaderContent,
-  CarList
-} from './styles'
+import { Container, Header, TotalCars, HeaderContent, CarList } from './styles'
 import { RFValue } from 'react-native-responsive-fontsize'
 import { Car } from '../../components/Car'
 
@@ -25,7 +19,7 @@ export function Home() {
       'https://groupeparkavenue.com/sites/default/files/styles/scale_1200/https/images.swift.fuseinteractive.ca/chrome/media/ChromeImageGallery/ColorMatched_01/Transparent/1280/cc_2019AUC19_01_1280/cc_2019AUC190001_01_1280_2Y2Y.png?itok=ah1rvJ4M'
   }
   return (
-    <HomeContainer>
+    <Container>
       <StatusBar
         barStyle="light-content"
         backgroundColor="transparent"
@@ -42,6 +36,6 @@ export function Home() {
         renderItem={({ item }) => <Car data={carData} />}
         keyExtractor={item => String(item)}
       />
-    </HomeContainer>
+    </Container>
   )
 }

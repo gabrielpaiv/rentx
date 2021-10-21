@@ -1,7 +1,7 @@
 import React from 'react'
 
 import {
-  ImageSliderContainer,
+  Container,
   ImageIndexes,
   ImageIndex,
   CarImageWrapper,
@@ -14,7 +14,7 @@ interface ImageSliderProps {
 
 export function ImageSlider({ imageUrl }: ImageSliderProps) {
   return (
-    <ImageSliderContainer>
+    <Container>
       <ImageIndexes>
         <ImageIndex active={true} />
         <ImageIndex active={false} />
@@ -25,6 +25,6 @@ export function ImageSlider({ imageUrl }: ImageSliderProps) {
       <CarImageWrapper>
         <CarImage source={{ uri: imageUrl[0] }} resizeMode="contain" />
       </CarImageWrapper>
-    </ImageSliderContainer>
+    </Container>
   )
 }

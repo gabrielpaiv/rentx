@@ -1,7 +1,7 @@
 import { RFValue } from 'react-native-responsive-fontsize'
 import styled from 'styled-components/native'
 
-export const AccessoryContainer = styled.View`
+export const Container = styled.View`
   width: 109px;
   height: 92px;
 

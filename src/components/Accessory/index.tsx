@@ -1,7 +1,7 @@
 import React from 'react'
 import { SvgProps } from 'react-native-svg'
 
-import { AccessoryContainer, Name } from './styles'
+import { Container, Name } from './styles'
 
 interface AccessoryProps {
   name: string
@@ -10,9 +10,9 @@ interface AccessoryProps {
 
 export function Accessory({ name, icon: Icon }: AccessoryProps) {
   return (
-    <AccessoryContainer>
+    <Container>
       <Icon width={32} height={32} />
       <Name>{name}</Name>
-    </AccessoryContainer>
+    </Container>
   )
 }

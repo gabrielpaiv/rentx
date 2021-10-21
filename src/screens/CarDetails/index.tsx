@@ -11,7 +11,7 @@ import exchangeSvg from '../../assets/exchange.svg'
 import peopleSvg from '../../assets/people.svg'
 
 import {
-  CarDetailsContainer,
+  CarContainer,
   Header,
   CarImages,
   Content,
@@ -30,7 +30,7 @@ import { Button } from '../../components/Button'
 
 export function CarDetails() {
   return (
-    <CarDetailsContainer>
+    <CarContainer>
       <Header>
         <BackButton onPress={() => {}} />
       </Header>
@@ -71,6 +71,6 @@ export function CarDetails() {
       <Footer>
         <Button title="Agendar" />
       </Footer>
-    </CarDetailsContainer>
+    </CarContainer>
   )
 }

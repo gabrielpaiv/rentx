@@ -2,7 +2,7 @@ import { FlatList } from 'react-native'
 import { RFValue } from 'react-native-responsive-fontsize'
 import styled from 'styled-components/native'
 
-export const HomeContainer = styled.View`
+export const Container = styled.View`
   flex: 1;
 
   background-color: ${({ theme }) => theme.colors.background_primary};

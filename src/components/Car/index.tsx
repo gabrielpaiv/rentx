@@ -3,7 +3,7 @@ import React from 'react'
 import GasolineSvg from '../../assets/gasoline.svg'
 
 import {
-  CarContainer,
+  Container,
   Details,
   Brand,
   Name,
@@ -31,7 +31,7 @@ interface CarProps {
 
 export function Car({ data }: CarProps) {
   return (
-    <CarContainer>
+    <Container>
       <Details>
         <Brand>{data.brand}</Brand>
         <Name>{data.name}</Name>
@@ -52,6 +52,6 @@ export function Car({ data }: CarProps) {
         }}
         resizeMode="contain"
       />
-    </CarContainer>
+    </Container>
   )
 }

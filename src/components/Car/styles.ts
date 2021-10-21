@@ -1,7 +1,7 @@
 import { RFValue } from 'react-native-responsive-fontsize'
 import styled from 'styled-components/native'
 
-export const CarContainer = styled.View`
+export const Container = styled.View`
   width: 100%;
   height: ${RFValue(126)}px;
 

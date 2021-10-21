@@ -6,7 +6,7 @@ interface ImageIndexProps {
   active: boolean
 }
 
-export const ImageSliderContainer = styled.View`
+export const Container = styled.View`
   width: 100%;
 `
 
