@@ -1,4 +1,5 @@
 import React from 'react'
+import 'react-native-gesture-handler'
 import {
   useFonts,
   Inter_400Regular,
@@ -12,9 +13,9 @@ import {
 
 import { ThemeProvider } from 'styled-components'
 
-import { SchedulingComplete } from './src/screens/SchedulingComplete'
 import AppLoading from 'expo-app-loading'
 import theme from './src/styles/theme'
+import { Routes } from './src/routes'
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -29,7 +30,7 @@ export default function App() {
   }
   return (
     <ThemeProvider theme={theme}>
-      <SchedulingComplete />
+      <Routes />
     </ThemeProvider>
   )
 }
