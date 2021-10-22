@@ -27,8 +27,14 @@ import {
   Footer
 } from './styles'
 import { Button } from '../../components/Button'
+import { useNavigation } from '@react-navigation/native'
 
 export function CarDetails() {
+  const navigation = useNavigation()
+
+  function handleSelectRentalPeriod() {
+    navigation.navigate('Scheduling')
+  }
   return (
     <CarContainer>
       <Header>
@@ -69,7 +75,10 @@ export function CarDetails() {
       </Content>
 
       <Footer>
-        <Button title="Agendar" />
+        <Button
+          title="Escolher período do aluguel"
+          onPress={handleSelectRentalPeriod}
+        />
       </Footer>
     </CarContainer>
   )
