@@ -40,6 +40,7 @@ import { Button } from '../../components/Button'
 import { RFValue } from 'react-native-responsive-fontsize'
 import { useTheme } from 'styled-components'
 import { useNavigation } from '@react-navigation/native'
+import { StatusBar } from 'react-native'
 
 export function SchedulingDetails() {
   const theme = useTheme()
@@ -50,6 +51,7 @@ export function SchedulingDetails() {
   }
   return (
     <CarContainer>
+      <StatusBar barStyle="dark-content" />
       <Header>
         <BackButton onPress={() => {}} />
       </Header>

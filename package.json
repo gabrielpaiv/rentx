@@ -4,13 +4,15 @@
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "web": "expo start --web",
-    "start": "react-native start"
+    "start": "react-native start",
+    "server": "json-server ./src/services/server.json --host 10.220.9.107 --port 3333 --delay 700"
   },
   "dependencies": {
     "@expo-google-fonts/archivo": "^0.2.0",
     "@expo-google-fonts/inter": "^0.2.0",
     "@react-navigation/native": "^6.0.6",
     "@react-navigation/stack": "^6.0.11",
+    "axios": "^0.23.0",
     "expo": "~42.0.1",
     "expo-app-loading": "1.1.2",
     "expo-font": "~9.2.1",
@@ -33,10 +35,11 @@
     "styled-components": "^5.3.3"
   },
   "devDependencies": {
-    "@types/react-native-calendars": "^1.1264.3",
     "@babel/core": "^7.9.0",
     "@types/react-native": "~0.63.2",
+    "@types/react-native-calendars": "^1.1264.3",
     "@types/styled-components-react-native": "^5.1.1",
+    "json-server": "^0.17.0",
     "react-native-svg-transformer": "^0.14.3",
     "typescript": "~4.0.0"
   },
