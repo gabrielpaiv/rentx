@@ -25,7 +25,7 @@ import { CarDTO } from '../../dtos/CarDTO'
 import { StatusBar } from 'react-native'
 import { getAccessoryIcon } from '../../utils/getAccessoryIcon'
 
-type Params = {
+export type Params = {
   car: CarDTO
 }
 
@@ -35,7 +35,7 @@ export function CarDetails() {
   const { car } = route.params as Params
 
   function handleSelectRentalPeriod() {
-    navigation.navigate('Scheduling')
+    navigation.navigate('Scheduling', { car })
   }
   return (
     <CarContainer>
