@@ -59,11 +59,11 @@ export function CarDetails() {
           </Rent>
         </Details>
         <Accessories>
-          {car.accessories.map(accesory => (
+          {car.accessories.map(accessory => (
             <Accessory
-              name={accesory.name}
-              icon={getAccessoryIcon(accesory.type)}
-              key={accesory.type}
+              name={accessory.name}
+              icon={getAccessoryIcon(accessory.type)}
+              key={accessory.type}
             />
           ))}
         </Accessories>
