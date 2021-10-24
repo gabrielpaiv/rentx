@@ -119,12 +119,7 @@ export function Scheduling() {
         <Button
           title="Confirmar"
           onPress={handleSchedule}
-          enabled={!!rentalPeriod.start || !!rentalPeriod.end}
-          color={
-            !(!!rentalPeriod.start || !!rentalPeriod.end)
-              ? theme.colors.main_medium
-              : undefined
-          }
+          enabled={!!rentalPeriod.start}
         />
       </Footer>
     </Container>
