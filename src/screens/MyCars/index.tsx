@@ -22,7 +22,7 @@ import {
   CarFooterPeriod,
   CarFooterDate
 } from './styles'
-import { Loading } from '../../components/Loading'
+import { LoadingAnimation } from '../../components/LoadingAnimation'
 
 type UserCars = {
   car: CarDTO
@@ -65,7 +65,7 @@ export function MyCars() {
         <SubTitle>Conforto, segurança e praticidade.</SubTitle>
       </Header>
       {loading ? (
-        <Loading />
+        <LoadingAnimation />
       ) : (
         <Content>
           <Appointments>

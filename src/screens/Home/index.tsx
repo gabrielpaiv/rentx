@@ -18,16 +18,9 @@ import Animated, {
 } from 'react-native-reanimated'
 
 import { Car } from '../../components/Car'
-import { Loading } from '../../components/Loading'
 
-import {
-  Container,
-  Header,
-  TotalCars,
-  HeaderContent,
-  CarList,
-  MyCarsButton
-} from './styles'
+import { Container, Header, TotalCars, HeaderContent, CarList } from './styles'
+import { LoadingAnimation } from '../../components/LoadingAnimation'
 
 const ButtonAnimated = Animated.createAnimatedComponent(RectButton)
 
@@ -109,7 +102,7 @@ export function Home() {
         </HeaderContent>
       </Header>
       {isLoading ? (
-        <Loading />
+        <LoadingAnimation />
       ) : (
         <CarList
           data={cars}
