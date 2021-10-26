@@ -5,7 +5,7 @@
     "ios": "react-native run-ios",
     "web": "expo start --web",
     "start": "react-native start",
-    "server": "json-server ./src/services/server.json --host 10.220.9.107 --port 3333 --delay 700"
+    "server": "json-server ./src/services/server.json --host 192.168.0.100 --port 3333 --delay 700"
   },
   "dependencies": {
     "@expo-google-fonts/archivo": "^0.2.0",
@@ -34,7 +34,8 @@
     "react-native-svg": "12.1.1",
     "react-native-unimodules": "0.14.10",
     "react-native-web": "~0.13.12",
-    "styled-components": "^5.3.3"
+    "styled-components": "^5.3.3",
+    "yup": "^0.32.11"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
