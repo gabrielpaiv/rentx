@@ -8,6 +8,7 @@ interface InputProps {
 
 export const Container = styled.View`
   flex-direction: row;
+  margin-bottom: 8px;
 `
 
 export const IconContainer = styled.View<InputProps>`
