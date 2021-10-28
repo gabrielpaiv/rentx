@@ -4,7 +4,7 @@ import { Keyboard, KeyboardAvoidingView } from 'react-native'
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler'
 import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs'
 import { useAuth } from '../../hooks/auth'
-import ImagePicker from 'expo-image-picker'
+import * as ImagePicker from 'expo-image-picker'
 
 import {
   Container,
