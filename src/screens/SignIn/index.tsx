@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Alert, Keyboard, KeyboardAvoidingView, StatusBar } from 'react-native'
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler'
 import { useTheme } from 'styled-components'
@@ -11,6 +11,7 @@ import { Button } from '../../components/Button'
 import { PasswordInput } from '../../components/PasswordInput'
 import { Container, Header, SubTitle, Title, Form, Footer } from './styles'
 import { useAuth } from '../../hooks/auth'
+import { database } from '../../database'
 
 export function SignIn() {
   const theme = useTheme()
