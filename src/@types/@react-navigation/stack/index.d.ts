@@ -6,6 +6,7 @@ declare namespace ReactNavigation {
     SchedulingDetails: NavigationStackProp<any, any>
     Confirmation: NavigationStackProp<any, any>
     MyCars: NavigationStackProp<any, any>
+    SignIn: NavigationStackProp<any, any>
     FirstStep: NavigationStackProp<any, any>
     SecondStep: NavigationStackProp<any, any>
   }
