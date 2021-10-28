@@ -4,16 +4,18 @@ import { TouchableWithoutFeedback } from 'react-native-gesture-handler'
 import { useTheme } from 'styled-components'
 import { useNavigation } from '@react-navigation/native'
 
-import Yup from 'yup'
+import * as Yup from 'yup'
 
 import { Input } from '../../components/Input'
 import { Button } from '../../components/Button'
 import { PasswordInput } from '../../components/PasswordInput'
 import { Container, Header, SubTitle, Title, Form, Footer } from './styles'
+import { useAuth } from '../../hooks/auth'
 
 export function SignIn() {
   const theme = useTheme()
   const navigation = useNavigation()
+  const { signIn } = useAuth()
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -27,6 +29,8 @@ export function SignIn() {
         password: Yup.string().required('A senha é obrigatória')
       })
       await schema.validate({ email, password })
+
+      signIn({ email, password })
     } catch (error) {
       if (error instanceof Yup.ValidationError) {
         Alert.alert('Opa', error.message)
@@ -78,7 +82,7 @@ export function SignIn() {
             <Button
               title="Login"
               onPress={handleSignIn}
-              enabled={false}
+              enabled={!!email || !!password}
               isLoading={false}
             />
             <Button
