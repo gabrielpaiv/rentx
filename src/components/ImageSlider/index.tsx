@@ -5,7 +5,10 @@ import { Bullet } from '../Bullet'
 import { Container, ImageIndexes, CarImageWrapper, CarImage } from './styles'
 
 interface ImageSliderProps {
-  imageUrl: string[]
+  imageUrl: {
+    id: string
+    photo: string
+  }[]
 }
 
 interface ChangeImageProps {
@@ -31,10 +34,10 @@ export function ImageSlider({ imageUrl }: ImageSliderProps) {
 
       <FlatList
         data={imageUrl}
-        keyExtractor={key => key}
+        keyExtractor={key => key.id}
         renderItem={({ item }) => (
           <CarImageWrapper>
-            <CarImage source={{ uri: item }} resizeMode="contain" />
+            <CarImage source={{ uri: item.photo }} resizeMode="contain" />
           </CarImageWrapper>
         )}
         horizontal
