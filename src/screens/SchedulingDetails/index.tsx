@@ -40,6 +40,7 @@ import { CarDTO } from '../../dtos/CarDTO'
 import { format } from 'date-fns'
 import { getPlatformDate } from '../../utils/getPlatformDate'
 import { api } from '../../services/api'
+import { useNetInfo } from '@react-native-community/netinfo'
 
 type Params = {
   car: CarDTO
@@ -52,6 +53,9 @@ type RentalPeriod = {
 }
 
 export function SchedulingDetails() {
+  const netInfo = useNetInfo()
+
+  const [carUpdated, setCarUpdated] = useState<CarDTO>({} as CarDTO)
   const [rentalPeriod, setRentalPeriod] = useState<RentalPeriod>(
     {} as RentalPeriod
   )
@@ -66,35 +70,25 @@ export function SchedulingDetails() {
 
   async function handleConfirmRental() {
     setIsLoading(true)
-    const schedulesByCar = await api.get<any>(`schedules_bycars/${car.id}`)
-
-    const unavailable_dates = [
-      ...schedulesByCar.data.unavailable_dates,
-      ...dates
-    ]
-
-    await api.post('schedules_byuser', {
-      user_id: 1,
-      car,
-      startDate: format(getPlatformDate(new Date(dates[0])), 'dd/MM/yyyy'),
-      endDate: format(
-        getPlatformDate(new Date(dates[dates.length - 1])),
-        'dd/MM/yyyy'
-      )
-    })
 
     await api
-      .put(`schedules_bycars/${car.id}`, { id: car.id, unavailable_dates })
+      .post('rentals', {
+        user_id: 1,
+        car_id: car.id,
+        start_date: new Date(dates[0]),
+        end_date: new Date(dates[dates.length - 1]),
+        total: rentTotal
+      })
       .then(() =>
         navigation.navigate('Confirmation', {
           title: 'Carro alugado!',
           message: `Agora você só precisa ir\naté a concessionária da RENTX\npegar o seu automóvel.`,
-          nextScreenRoute: 'MyCars'
+          nextScreenRoute: 'Home'
         })
       )
       .catch(() => {
-        Alert.alert('Não foi possível confirmar o agendamento.')
         setIsLoading(false)
+        Alert.alert('Não foi possível confirmar o agendamento.')
       })
   }
 
@@ -108,6 +102,18 @@ export function SchedulingDetails() {
     })
   }, [])
 
+  useEffect(() => {
+    async function fetchCarUpdated() {
+      const response = await api
+        .get<CarDTO>(`cars/${car.id}`)
+        .then(response => response.data)
+      setCarUpdated(response)
+    }
+    if (netInfo.isConnected === true) {
+      fetchCarUpdated()
+    }
+  }, [netInfo.isConnected])
+
   return (
     <CarContainer>
       <StatusBar barStyle="dark-content" />
@@ -115,7 +121,13 @@ export function SchedulingDetails() {
         <BackButton onPress={() => {}} />
       </Header>
       <CarImages>
-        <ImageSlider imageUrl={car.photos} />
+        <ImageSlider
+          imageUrl={
+            !!carUpdated.photos
+              ? carUpdated.photos
+              : [{ id: car.thumbnail, photo: car.thumbnail }]
+          }
+        />
       </CarImages>
 
       <Content>
@@ -129,15 +141,17 @@ export function SchedulingDetails() {
             <Price>R$ {car.price}</Price>
           </Rent>
         </Details>
-        <Accessories>
-          {car.accessories.map(accessory => (
-            <Accessory
-              name={accessory.name}
-              icon={getAccessoryIcon(accessory.type)}
-              key={accessory.id}
-            />
-          ))}
-        </Accessories>
+        {carUpdated.accessories && (
+          <Accessories>
+            {carUpdated.accessories.map(accessory => (
+              <Accessory
+                name={accessory.name}
+                icon={getAccessoryIcon(accessory.type)}
+                key={accessory.id}
+              />
+            ))}
+          </Accessories>
+        )}
         <RentalPeriod>
           <CalendarIcon>
             <Feather
