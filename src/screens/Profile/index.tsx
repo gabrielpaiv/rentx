@@ -29,11 +29,13 @@ import { BackButton } from '../../components/BackButton'
 import { Input } from '../../components/Input'
 import { PasswordInput } from '../../components/PasswordInput'
 import { Button } from '../../components/Button'
+import { useNetInfo } from '@react-native-community/netinfo'
 
 export function Profile() {
   const theme = useTheme()
   const { user, signOut, updateUser } = useAuth()
   const navigation = useNavigation()
+  const netInfo = useNetInfo()
 
   const [option, setOption] = useState<'dataEdit' | 'passwordEdit'>('dataEdit')
   const [avatar, setAvatar] = useState(user.avatar)
@@ -88,6 +90,16 @@ export function Profile() {
     }
   }
 
+  function handleOptionChange(selectedOption: 'dataEdit' | 'passwordEdit') {
+    if (netInfo.isConnected === false && selectedOption === 'passwordEdit') {
+      Alert.alert(
+        'Você está Offline',
+        'Para mudar a senha, conecte-se à internet.'
+      )
+    }
+    setOption(selectedOption)
+  }
+
   async function handleSignOut() {
     Alert.alert(
       'Tem Certeza?',
@@ -122,13 +134,13 @@ export function Profile() {
             <Options>
               <Option
                 active={option === 'dataEdit'}
-                onPress={() => setOption('dataEdit')}
+                onPress={() => handleOptionChange('dataEdit')}
               >
                 <OptionTitle active={option === 'dataEdit'}>Dados</OptionTitle>
               </Option>
               <Option
                 active={option === 'passwordEdit'}
-                onPress={() => setOption('passwordEdit')}
+                onPress={() => handleOptionChange('passwordEdit')}
               >
                 <OptionTitle active={option === 'passwordEdit'}>
                   Trocar senha

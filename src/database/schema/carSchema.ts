@@ -1,4 +1,4 @@
-import { tableSchema } from '@nozbe/watermelondb/Schema'
+import { tableSchema } from '@nozbe/watermelondb'
 
 const carSchema = tableSchema({
   name: 'cars',
@@ -7,8 +7,8 @@ const carSchema = tableSchema({
     { name: 'brand', type: 'string' },
     { name: 'about', type: 'string' },
     { name: 'fuel_type', type: 'string' },
-    { name: 'price', type: 'string' },
     { name: 'period', type: 'string' },
+    { name: 'price', type: 'number' },
     { name: 'thumbnail', type: 'string' }
   ]
 })

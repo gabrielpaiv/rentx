@@ -16,11 +16,11 @@ class Car extends Model {
   @field('fuel_type')
   fuel_type!: string
 
-  @field('price')
-  price!: string
-
   @field('period')
   period!: string
+
+  @field('price')
+  price!: string
 
   @field('thumbnail')
   thumbnail!: string
