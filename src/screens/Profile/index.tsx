@@ -1,10 +1,12 @@
 import React, { useState } from 'react'
 import { useTheme } from 'styled-components'
-import { Keyboard, KeyboardAvoidingView } from 'react-native'
+import { Alert, Keyboard, KeyboardAvoidingView } from 'react-native'
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler'
 import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs'
+import { useNavigation } from '@react-navigation/native'
 import { useAuth } from '../../hooks/auth'
 import * as ImagePicker from 'expo-image-picker'
+import * as Yup from 'yup'
 
 import {
   Container,
@@ -26,17 +28,17 @@ import { Feather } from '@expo/vector-icons'
 import { BackButton } from '../../components/BackButton'
 import { Input } from '../../components/Input'
 import { PasswordInput } from '../../components/PasswordInput'
+import { Button } from '../../components/Button'
 
 export function Profile() {
   const theme = useTheme()
-  const { user } = useAuth()
+  const { user, signOut, updateUser } = useAuth()
+  const navigation = useNavigation()
 
   const [option, setOption] = useState<'dataEdit' | 'passwordEdit'>('dataEdit')
   const [avatar, setAvatar] = useState(user.avatar)
   const [name, setName] = useState(user.name)
   const [driverLicense, setDriverLicense] = useState(user.driver_license)
-
-  function handleSignOut() {}
 
   async function handleAvatarSelect() {
     const result = await ImagePicker.launchImageLibraryAsync({
@@ -53,6 +55,48 @@ export function Profile() {
     if (result.uri) {
       setAvatar(result.uri)
     }
+  }
+
+  async function handleProfileUpdate() {
+    try {
+      const schema = Yup.object().shape({
+        driverLicense: Yup.string().required('CNH é obrigatória'),
+        name: Yup.string().required('O nome é obrigatório')
+      })
+      const data = { name, driverLicense }
+      await schema.validate(data)
+      await updateUser({
+        user_id: user.user_id,
+        id: user.id,
+        email: user.email,
+        token: user.token,
+        name,
+        driver_license: driverLicense,
+        avatar
+      })
+      navigation.navigate('Confirmation', {
+        title: 'Feito!',
+        message: `Seus dados\nforam atualizados.`,
+        nextScreenRoute: 'Home'
+      })
+    } catch (error) {
+      if (error instanceof Yup.ValidationError) {
+        Alert.alert('Epa!', error.message)
+      } else {
+        Alert.alert('Ops', 'Não foi possível atualizar o perfil')
+      }
+    }
+  }
+
+  async function handleSignOut() {
+    Alert.alert(
+      'Tem Certeza?',
+      'Se você sair, irá precisar de uma conexão para entrar novamente.',
+      [
+        { text: 'Cancelar', onPress: () => {} },
+        { text: 'Sair', onPress: () => signOut() }
+      ]
+    )
   }
 
   return (
@@ -124,6 +168,7 @@ export function Profile() {
                 <PasswordInput iconName="lock" placeholder="Confirmar Senha" />
               </Section>
             )}
+            <Button title="Salvar alterações" onPress={handleProfileUpdate} />
           </Content>
         </Container>
       </TouchableWithoutFeedback>
