@@ -14,6 +14,8 @@
   - Escolher um intervalo no calendário,
   - Confirmar os detalhes do agendamento e agendar,
   - Ver os carros já agendados.
+  - Criar uma conta e fazer login
+  - Mudar os dados do perfil
 
 &nbsp;
 
@@ -44,6 +46,9 @@
 - Iphone X Helper
 - Json Server
 - Typescript
+- WatermelonDB
+- Fast Image
+- Yup
 
 ## ⚙️ Instalação
 
