@@ -16,6 +16,10 @@
   - Ver os carros já agendados.
   - Criar uma conta e fazer login
   - Mudar os dados do perfil
+- A aplicação roda no modelo Offline-first, as possibilidades de uso offline são:
+  - Ver os carros disponíveis (sem o preço)
+  - Mudar os dados do perfil (exceto a senha)
+  - Ver a descrição do carro
 
 &nbsp;
 
@@ -62,24 +66,29 @@ $ git clone https://github.com/gabrielpaiv/rentx.git
 # Acesse a pasta da aplicação
 $ cd rentx
 
+# Acesse o backend da aplicação
+$ cd backend
+
 # Instale as dependências
 $ yarn
 
-# Inicie o expo
-$ expo start
+# Inicie a api
+$ yarn start
 
-# Configure seu IP no Json-Server:
-# Vá até o package.json aonde estiver "server" e coloque de acordo
-# "server": "json-server ./src/services/server.json --host (seu IPV4) --port 3333 --delay 700"
+# Acesse a página inicial
+$ cd ../
+
+# Inicie o metro bundler
+$ yarn start
+
+# Instale o apk no android (certifique-se que seu dispositivo físico esteja
+# conectado com a opção de depuração USB ativada ou que o emulador esteja pronto)
+$ yarn run android
 
 # Configure a api:
 # Vá até src/services/api.ts e mude o endereço
 # baseURL: 'http://(seu IPV4):3333'
 
-# Inicie o json-server:
-$ yarn server
-
-# Acesse o QR Code diretamente do aplicativo Expo Go
 ```
 
 ---
