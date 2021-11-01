@@ -32,17 +32,21 @@ export function SecondStep() {
   const theme = useTheme()
   const navigation = useNavigation()
 
+  const [isLoading, setIsLoading] = useState(false)
   const [password, setPassword] = useState('')
   const [passwordConfirmation, setPasswordConfirmation] = useState('')
 
   const { user } = useRoute().params as Params
 
   async function handleRegister() {
+    setIsLoading(true)
     if (!password || !passwordConfirmation) {
+      setIsLoading(false)
       return Alert.alert('Opa', 'Informe e confirme a senha!')
     }
 
     if (password != passwordConfirmation) {
+      setIsLoading(false)
       return Alert.alert('Eita', 'As senhas não são iguais')
     }
 
@@ -61,6 +65,7 @@ export function SecondStep() {
         })
       )
       .catch(error => {
+        setIsLoading(false)
         console.log(error)
         Alert.alert('Ops', 'Ocorreu um erro ao tentar cadastrar')
       })
@@ -100,6 +105,8 @@ export function SecondStep() {
             title="Cadastrar"
             color={theme.colors.success}
             onPress={handleRegister}
+            isLoading={isLoading}
+            enabled={!isLoading}
           />
         </Container>
       </TouchableWithoutFeedback>
