@@ -23,7 +23,13 @@
 
 &nbsp;
 
+#### Online
+
 <div cols=3 align="center">
+  <img src="https://github.com/gabrielpaiv/gabrielpaiv/blob/main/.github/images/Projects/rentx/SignIn.jpeg?raw=true" height="500px" alt="SignIn"/>
+  <img src="https://github.com/gabrielpaiv/gabrielpaiv/blob/main/.github/images/Projects/rentx/SignUp-1.jpeg?raw=true" height="500px" alt="SignUp-1"/>
+  <img src="https://github.com/gabrielpaiv/gabrielpaiv/blob/main/.github/images/Projects/rentx/SignUp-2.jpeg?raw=true" height="500px" alt="SignUp-2"/>
+  <img src="https://github.com/gabrielpaiv/gabrielpaiv/blob/main/.github/images/Projects/rentx/SignUp-3.jpeg?raw=true" height="500px" alt="SignUp-3"/>
   <img src="https://github.com/gabrielpaiv/gabrielpaiv/blob/main/.github/images/Projects/rentx/Home.jpeg?raw=true" height="500px" alt="Home"/>
   <img src="https://github.com/gabrielpaiv/gabrielpaiv/blob/main/.github/images/Projects/rentx/CarDetails.jpeg?raw=true" height="500px" alt="CarDetails"/>
   <img src="https://github.com/gabrielpaiv/gabrielpaiv/blob/main/.github/images/Projects/rentx/Scheduling.jpeg?raw=true" height="500px" alt="Scheduling"/>
@@ -31,7 +37,14 @@
   <img src="https://github.com/gabrielpaiv/gabrielpaiv/blob/main/.github/images/Projects/rentx/SchedulingComplete.jpeg?raw=true" height="500px" alt="SchedulingComplete"/>
   <img src="https://github.com/gabrielpaiv/gabrielpaiv/blob/main/.github/images/Projects/rentx/MyCars.jpeg?raw=true" height="500px" alt="MyCars"/>
   <img src="https://github.com/gabrielpaiv/gabrielpaiv/blob/main/.github/images/Projects/rentx/RentX-animation.gif?raw=true" height="500px" alt="RentX-animation"/>
+</div>
 
+#### Offline
+
+<div cols=3 align="center">
+  <img src="https://github.com/gabrielpaiv/gabrielpaiv/blob/main/.github/images/Projects/rentx/HomeOffline.jpeg?raw=true" height="500px" alt="Home Offline"/>
+  <img src="https://github.com/gabrielpaiv/gabrielpaiv/blob/main/.github/images/Projects/rentx/CarDetailsOffline.jpeg?raw=true" height="500px" alt="CarDetails Offline"/>
+  <img src="https://github.com/gabrielpaiv/gabrielpaiv/blob/main/.github/images/Projects/rentx/Profile.jpeg?raw=true" height="500px" alt="Profile"/>
 </div>
 
 &nbsp;
